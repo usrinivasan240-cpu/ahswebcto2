@@ -106,7 +106,7 @@ const successMessage = document.getElementById('successMessage');
 // 9. Replace GOOGLE_SCRIPT_URL below with your actual Web App URL
 // ========================================
 
-const GOOGLE_SCRIPT_URL = ''; // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5yqGCHcYyQbAa4nyIP37qhmbPXhYCB0X2UPwicLwKbfBWgnwr_1urKKi2P0UumGyF/exec';
 
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
@@ -123,28 +123,13 @@ if (contactForm) {
 
         // Collect form data
         const formData = {
-            timestamp: new Date().toISOString(),
             name: document.getElementById('name').value.trim(),
-            businessName: document.getElementById('businessName').value.trim(),
+            business: document.getElementById('businessName').value.trim(),
             phone: document.getElementById('phone').value.trim(),
             email: document.getElementById('email').value.trim(),
             requirement: document.getElementById('requirement').value.trim(),
             plan: document.getElementById('plan').value
         };
-
-        // Check if Google Script URL is configured
-        if (!GOOGLE_SCRIPT_URL) {
-            // If not configured, simulate success for demo purposes
-            console.warn('Google Script URL not configured. Data:', formData);
-            console.log('To enable Google Sheets integration:');
-            console.log('1. Open script.js');
-            console.log('2. Replace GOOGLE_SCRIPT_URL with your Google Apps Script Web App URL');
-            console.log('3. Follow the setup instructions in the script comments');
-
-            // Show success message
-            showSuccessMessage();
-            return;
-        }
 
         try {
             // Send data to Google Sheets
