@@ -1,0 +1,28 @@
+# Auto detect text files
+* text=auto
+
+# Source files
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.xml text eol=lf
+*.txt text eol=lf
+
+# Windows files
+*.bat text eol=cRLF
+*.cmd text eol=cRLF
+
+# Image files
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.svg binary
+
+# Font files
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary

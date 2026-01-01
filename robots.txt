@@ -1,0 +1,6 @@
+# robots.txt for AutoHub Solutions
+
+User-agent: *
+Allow: /
+
+Sitemap: https://yourdomain.com/sitemap.xml
