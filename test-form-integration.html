@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Integration Test - AutoHub Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #008cff;
+        }
+        .test-section {
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #008cff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .checklist {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .checklist li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #0a0a0a;
+            border-left: 3px solid #008cff;
+            border-radius: 4px;
+        }
+        .checklist li:before {
+            content: "✓ ";
+            color: #00ff00;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .code-block {
+            background: #0a0a0a;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .code-block pre {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .test-form {
+            background: #0a0a0a;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: #000000;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #008cff;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            background: linear-gradient(135deg, #008cff 0%, #0066cc 100%);
+            color: #ffffff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .success-message {
+            background: #0a3a0a;
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            display: none;
+        }
+        .success-message.show {
+            display: block;
+        }
+        .success-icon {
+            font-size: 48px;
+            color: #00ff00;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background: #0a2a4a;
+            border: 1px solid #008cff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .info-box h3 {
+            color: #008cff;
+            margin-bottom: 10px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #0a3a0a;
+            color: #00ff00;
+        }
+        .status.info {
+            background: #0a2a4a;
+            color: #008cff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Form Integration Test</h1>
+        
+        <div class="test-section">
+            <h2>Integration Status</h2>
+            <div class="info-box">
+                <h3>Backend Configuration</h3>
+                <p><strong>Endpoint:</strong> <span class="status info">CONFIGURED</span></p>
+                <div class="code-block">
+                    <pre>https://script.google.com/macros/s/AKfycbx5yqGCHcYyQbAa4nyIP37qhmbPXhYCB0X2UPwicLwKbfBWgnwr_1urKKi2P0UumGyF/exec</pre>
+                </div>
+            </div>
+            
+            <ul class="checklist">
+                <li><strong>POST Request:</strong> Configured to send data via HTTP POST</li>
+                <li><strong>JSON Format:</strong> Data sent with correct field names (name, business, phone, email, requirement, plan)</li>
+                <li><strong>No Page Reload:</strong> Form submission uses preventDefault()</li>
+                <li><strong>Field Validation:</strong> All required fields validated before submission</li>
+                <li><strong>Phone Validation:</strong> 10-digit Indian phone number validation</li>
+                <li><strong>Email Validation:</strong> Standard email format validation</li>
+                <li><strong>Success Message:</strong> "Thank you! Our team will contact you soon."</li>
+                <li><strong>Loading State:</strong> Button shows "Submitting..." during submission</li>
+                <li><strong>Error Handling:</strong> Try-catch block with user-friendly error messages</li>
+                <li><strong>Mobile Responsive:</strong> Works on desktop and mobile devices</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>Data Structure Being Sent</h2>
+            <div class="code-block">
+                <pre>{
+  "name": "Customer Name",
+  "business": "Business Name",
+  "phone": "Phone Number",
+  "email": "Email Address",
+  "requirement": "Automation Requirement",
+  "plan": "Selected Plan"
+}</pre>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Test Form Submission</h2>
+            <p style="margin-bottom: 20px; color: #b0b0b0;">Fill out this form to test the Google Sheets integration. Data will be sent to your configured Google Apps Script Web App.</p>
+            
+            <form id="testForm" class="test-form">
+                <div class="form-group">
+                    <label for="testName">Name *</label>
+                    <input type="text" id="testName" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="testBusiness">Business Name *</label>
+                    <input type="text" id="testBusiness" required placeholder="Enter your business name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="testPhone">Phone Number *</label>
+                    <input type="tel" id="testPhone" required placeholder="9876543210">
+                </div>
+                
+                <div class="form-group">
+                    <label for="testEmail">Email Address *</label>
+                    <input type="email" id="testEmail" required placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="testRequirement">Automation Requirement *</label>
+                    <textarea id="testRequirement" required placeholder="Describe your automation needs..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="testPlan">Plan Interested *</label>
+                    <select id="testPlan" required>
+                        <option value="">Select a plan</option>
+                        <option value="Demo">Demo Plan - ₹500</option>
+                        <option value="Basic">Basic Plan - ₹2,500</option>
+                        <option value="Standard">Standard Plan - ₹5,000</option>
+                        <option value="Custom">Custom Plan</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="testSubmitBtn">Test Submission</button>
+            </form>
+            
+            <div id="testSuccessMessage" class="success-message">
+                <div class="success-icon">✓</div>
+                <h3>Thank you!</h3>
+                <p>Our team will contact you soon.</p>
+                <button onclick="resetTestForm()" style="margin-top: 20px;">Submit Another Enquiry</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Verification Steps</h2>
+            <ol style="list-style-position: inside; color: #b0b0b0; line-height: 2;">
+                <li>Fill out the test form above with sample data</li>
+                <li>Click "Test Submission" button</li>
+                <li>Check your Google Sheet for the new row</li>
+                <li>Verify all fields are captured correctly</li>
+                <li>Confirm the success message appears</li>
+            </ol>
+            
+            <div class="info-box" style="margin-top: 20px;">
+                <h3>📊 Google Sheet URL</h3>
+                <p><a href="https://docs.google.com/spreadsheets/d/1OzdQ-B__cHqbuNp2GTRUxYqxP9t8F1d_SmPeOga1yDo/edit?usp=sharing" target="_blank" style="color: #008cff; text-decoration: none;">Open Google Sheet →</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Same configuration as main site
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5yqGCHcYyQbAa4nyIP37qhmbPXhYCB0X2UPwicLwKbfBWgnwr_1urKKi2P0UumGyF/exec';
+        
+        const testForm = document.getElementById('testForm');
+        const testSubmitBtn = document.getElementById('testSubmitBtn');
+        const testSuccessMessage = document.getElementById('testSuccessMessage');
+
+        testForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validate form
+            if (!validateTestForm()) {
+                return;
+            }
+
+            // Show loading state
+            testSubmitBtn.textContent = 'Submitting...';
+            testSubmitBtn.disabled = true;
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('testName').value.trim(),
+                business: document.getElementById('testBusiness').value.trim(),
+                phone: document.getElementById('testPhone').value.trim(),
+                email: document.getElementById('testEmail').value.trim(),
+                requirement: document.getElementById('testRequirement').value.trim(),
+                plan: document.getElementById('testPlan').value
+            };
+
+            console.log('📤 Sending data to Google Sheets:', formData);
+
+            try {
+                // Send data to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                console.log('✅ Form submitted successfully');
+                
+                // Show success message
+                testForm.style.display = 'none';
+                testSuccessMessage.classList.add('show');
+                testSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            } catch (error) {
+                console.error('❌ Error submitting form:', error);
+                alert('There was an error submitting your form. Please try again or contact us directly.');
+            } finally {
+                testSubmitBtn.textContent = 'Test Submission';
+                testSubmitBtn.disabled = false;
+            }
+        });
+
+        function validateTestForm() {
+            const name = document.getElementById('testName').value.trim();
+            const business = document.getElementById('testBusiness').value.trim();
+            const phone = document.getElementById('testPhone').value.trim();
+            const email = document.getElementById('testEmail').value.trim();
+            const requirement = document.getElementById('testRequirement').value.trim();
+            const plan = document.getElementById('testPlan').value;
+
+            if (!name) {
+                alert('Please enter your name');
+                return false;
+            }
+
+            if (!business) {
+                alert('Please enter your business name');
+                return false;
+            }
+
+            if (!phone) {
+                alert('Please enter your phone number');
+                return false;
+            }
+
+            // Validate phone number format (Indian numbers)
+            const phoneRegex = /^[6-9]\d{9}$/;
+            if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
+                alert('Please enter a valid 10-digit phone number (starting with 6-9)');
+                return false;
+            }
+
+            if (!email) {
+                alert('Please enter your email address');
+                return false;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!requirement) {
+                alert('Please describe your automation requirement');
+                return false;
+            }
+
+            if (!plan) {
+                alert('Please select a plan');
+                return false;
+            }
+
+            return true;
+        }
+
+        function resetTestForm() {
+            testForm.reset();
+            testForm.style.display = 'block';
+            testSuccessMessage.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
