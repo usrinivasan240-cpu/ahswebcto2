@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutoHub Solutions - Try our AI chatbot demo. Experience intelligent customer support automation.">
+    <meta name="keywords" content="AI chatbot demo, customer support automation, AutoHub Solutions, chatbot trial">
+    <meta name="author" content="AutoHub Solutions">
+    <meta property="og:title" content="AutoHub Solutions - Demo Chatbot">
+    <meta property="og:description" content="Try our AI chatbot demo and experience intelligent customer support automation.">
+    <meta property="og:type" content="website">
+    <title>AutoHub Solutions - Demo Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .demo-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, var(--secondary-black) 0%, var(--primary-black) 100%);
+        }
+        .demo-header h1 {
+            font-size: 3rem;
+            color: var(--text-white);
+            margin-bottom: 20px;
+        }
+        .demo-header p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .demo-info {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        .demo-info h2 {
+            color: var(--text-white);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .demo-info p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+        }
+        .demo-feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .demo-feature-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        .demo-feature-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        .cta-section {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent-blue);
+            color: var(--text-white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 140, 255, 0.3);
+        }
+        .chatbot-notice {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-blue);
+            padding: 20px 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .chatbot-notice h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+        .chatbot-notice p {
+            color: var(--text-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>AutoHub Solutions</h2>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#why-automation">Why Automation?</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="demo-chatbot.html" class="demo-link" style="color: var(--accent-blue);">Demo Chatbot</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Demo Header -->
+    <header class="demo-header">
+        <h1>🤖 Demo Chatbot</h1>
+        <p>Experience the power of AI automation with our interactive chatbot demo. See how intelligent customer support works in real-time.</p>
+    </header>
+
+    <!-- Demo Content -->
+    <div class="demo-container">
+        <div class="chatbot-notice">
+            <h3>Interactive Demo Available</h3>
+            <p>The AI chatbot is available in the bottom-right corner of this page. Feel free to interact with it!</p>
+        </div>
+
+        <div class="demo-info">
+            <h2>What Can This Chatbot Do?</h2>
+            <p>Our AI-powered chatbot is designed to transform your customer support experience. It's not just a simple question-answering system—it's an intelligent assistant that can handle complex conversations.</p>
+        </div>
+
+        <div class="demo-features">
+            <div class="demo-feature-card">
+                <h3>💬 Natural Conversations</h3>
+                <p>Interact naturally with the AI chatbot. It understands context and provides relevant responses, just like a human agent would.</p>
+            </div>
+            <div class="demo-feature-card">
+                <h3>🔍 Smart Query Handling</h3>
+                <p>Ask questions about our services, pricing, or automation solutions. The chatbot provides accurate information instantly.</p>
+            </div>
+            <div class="demo-feature-card">
+                <h3>⚡ Instant Responses</h3>
+                <p>No waiting time! Get immediate answers to your questions 24/7, improving customer satisfaction and engagement.</p>
+            </div>
+            <div class="demo-feature-card">
+                <h3>🎯 Lead Qualification</h3>
+                <p>The chatbot can qualify leads by gathering information and directing potential customers to the right solutions.</p>
+            </div>
+        </div>
+
+        <div class="demo-info">
+            <h2>Why Choose AutoHub Solutions?</h2>
+            <p>We specialize in building custom AI chatbots and automation solutions tailored to your business needs. Our chatbots are:</p>
+        </div>
+
+        <div class="demo-features">
+            <div class="demo-feature-card">
+                <h3>✅ Custom-Trained</h3>
+                <p>We train the chatbot on your specific business information, ensuring accurate and relevant responses.</p>
+            </div>
+            <div class="demo-feature-card">
+                <h3>✅ Multi-Platform</h3>
+                <p>Deploy across WhatsApp, website, and other platforms for seamless customer experiences.</p>
+            </div>
+            <div class="demo-feature-card">
+                <h3>✅ Easy Integration</h3>
+                <p>Integrates with your existing systems, CRM, and business tools for a unified workflow.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="color: var(--text-white); margin-bottom: 20px;">Ready to Automate Your Business?</h2>
+            <p style="color: var(--text-gray); margin-bottom: 30px;">Get started with our Demo Plan for just ₹500 or contact us for a custom solution.</p>
+            <a href="index.html#contact" class="back-button">Get Your Custom Chatbot</a>
+        </div>
+
+        <div class="cta-section">
+            <a href="index.html" class="back-button" style="background: var(--card-bg); border: 1px solid var(--border-color);">← Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AutoHub Solutions</h3>
+                    <p>Smart WhatsApp & AI Automation for Modern Businesses</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <p>📧 autohubsolution777@gmail.com</p>
+                        <p>📞 +91 9940918442</p>
+                        <p>🕐 Everyday 6 PM – 12 AM</p>
+                        <p>📍 Trichy, Tamil Nadu</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            Instagram
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                            YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutoHub Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Embed Script -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/12/30/16/20251230160623-O7WT6KLH.json" defer></script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

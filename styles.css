@@ -117,6 +117,15 @@ button:focus {
     color: var(--accent-blue);
 }
 
+.nav-menu .demo-link {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.nav-menu .demo-link:hover {
+    color: var(--text-white);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
