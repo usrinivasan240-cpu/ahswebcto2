@@ -112,22 +112,27 @@ if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
+        // Clear previous errors
+        clearValidationErrors();
+
         // Validate form
         if (!validateForm()) {
             return;
         }
 
         // Show loading state
+        const originalBtnText = submitBtn.textContent;
         submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
 
-        // Collect form data
+        // Collect and sanitize form data
         const formData = {
-            name: document.getElementById('name').value.trim(),
-            business: document.getElementById('businessName').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            requirement: document.getElementById('requirement').value.trim(),
+            name: sanitizeInput(document.getElementById('name').value.trim()),
+            business: sanitizeInput(document.getElementById('businessName').value.trim()),
+            phone: sanitizeInput(document.getElementById('phone').value.trim()),
+            email: sanitizeInput(document.getElementById('email').value.trim()),
+            requirement: sanitizeInput(document.getElementById('requirement').value.trim()),
             plan: document.getElementById('plan').value
         };
 
@@ -147,12 +152,83 @@ if (contactForm) {
 
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('There was an error submitting your form. Please try again or contact us directly.');
+            
+            // Show user-friendly error message
+            showErrorMessage('Unable to submit form. Please check your connection and try again, or contact us directly.');
         } finally {
-            submitBtn.textContent = 'Submit Enquiry';
+            // Reset button state
+            submitBtn.textContent = originalBtnText;
             submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
         }
     });
+}
+
+// ========================================
+// FORM VALIDATION & SECURITY HELPERS
+// ========================================
+
+// Sanitize input to prevent XSS
+function sanitizeInput(input) {
+    if (!input) return '';
+    return input
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// Clear validation errors
+function clearValidationErrors() {
+    const errorElements = document.querySelectorAll('.error-message');
+    errorElements.forEach(el => el.remove());
+    
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.classList.remove('error');
+    });
+}
+
+// Show error message for a specific field
+function showFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const formGroup = field.closest('.form-group');
+    
+    if (formGroup && !formGroup.querySelector('.error-message')) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        formGroup.appendChild(errorDiv);
+        formGroup.classList.add('error');
+    }
+}
+
+// Show general error message
+function showErrorMessage(message) {
+    // Remove existing error message if any
+    const existingError = document.querySelector('.form-error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Create and show new error message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error-message';
+    errorDiv.innerHTML = `
+        <div class="error-icon">⚠️</div>
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()" class="close-error">&times;</button>
+    `;
+    
+    contactForm.parentNode.insertBefore(errorDiv, contactForm);
+    
+    // Auto-remove after 10 seconds
+    setTimeout(() => {
+        if (errorDiv.parentNode) {
+            errorDiv.remove();
+        }
+    }, 10000);
 }
 
 // Form validation
@@ -164,52 +240,63 @@ function validateForm() {
     const requirement = document.getElementById('requirement').value.trim();
     const plan = document.getElementById('plan').value;
 
-    // Check required fields
+    let isValid = true;
+
+    // Check required fields and show specific errors
     if (!name) {
-        alert('Please enter your name');
-        return false;
+        showFieldError('name', 'Please enter your name');
+        isValid = false;
     }
 
     if (!businessName) {
-        alert('Please enter your business name');
-        return false;
+        showFieldError('businessName', 'Please enter your business name');
+        isValid = false;
     }
 
     if (!phone) {
-        alert('Please enter your phone number');
-        return false;
-    }
-
-    // Validate phone number format (basic validation for Indian numbers)
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
-        alert('Please enter a valid 10-digit phone number');
-        return false;
+        showFieldError('phone', 'Please enter your phone number');
+        isValid = false;
+    } else {
+        // Validate phone number format (basic validation for Indian numbers)
+        const phoneRegex = /^[6-9]\d{9}$/;
+        const cleanPhone = phone.replace(/\D/g, '');
+        if (!phoneRegex.test(cleanPhone)) {
+            showFieldError('phone', 'Please enter a valid 10-digit phone number (6-9)xxxxxxxx');
+            isValid = false;
+        }
     }
 
     if (!email) {
-        alert('Please enter your email address');
-        return false;
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return false;
+        showFieldError('email', 'Please enter your email address');
+        isValid = false;
+    } else {
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showFieldError('email', 'Please enter a valid email address');
+            isValid = false;
+        }
     }
 
     if (!requirement) {
-        alert('Please describe your automation requirement');
-        return false;
+        showFieldError('requirement', 'Please describe your automation requirement');
+        isValid = false;
     }
 
     if (!plan) {
-        alert('Please select a plan');
-        return false;
+        showFieldError('plan', 'Please select a plan');
+        isValid = false;
     }
 
-    return true;
+    // Scroll to first error if validation failed
+    if (!isValid) {
+        const firstError = document.querySelector('.form-group.error');
+        if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    return isValid;
 }
 
 // Show success message

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Integration Test - AutoHub Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--secondary-black);
+            border-radius: 8px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .status-success {
+            background: rgba(46, 213, 115, 0.2);
+            color: #2ed573;
+            border: 1px solid #2ed573;
+        }
+        
+        .status-error {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            border: 1px solid #ff4757;
+        }
+        
+        .integration-details {
+            background: rgba(0, 140, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .data-structure {
+            background: var(--secondary-black);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        
+        .test-form {
+            margin-top: 30px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-container">
+            <h1>🧪 Google Sheets Integration Test</h1>
+            <p>Test page for verifying the Google Apps Script integration with AutoHub Solutions website.</p>
+            
+            <!-- Integration Status -->
+            <div class="test-section">
+                <h2>📊 Integration Status</h2>
+                <div class="integration-details">
+                    <h3>Configuration</h3>
+                    <p><strong>Google Apps Script URL:</strong></p>
+                    <code>https://script.google.com/macros/s/AKfycbx5yqGCHcYyQbAa4nyIP37qhmbPXhYCB0X2UPwicLwKbfBWgnwr_1urKKi2P0UumGyF/exec</code>
+                    
+                    <p><strong>Method:</strong> HTTP POST</p>
+                    <p><strong>Content-Type:</strong> application/json</p>
+                    <p><strong>Mode:</strong> no-cors (required for Google Apps Script)</p>
+                    
+                    <h3>Data Structure</h3>
+                    <div class="data-structure">
+{
+  "name": "Customer Name",
+  "business": "Business Name",
+  "phone": "9876543210",
+  "email": "customer@example.com",
+  "requirement": "Automation needs description",
+  "plan": "Basic"
+}
+                    </div>
+                </div>
+                
+                <p><span class="status-indicator status-success">✅ Configured</span> Google Apps Script URL is set</p>
+                <p><span class="status-indicator status-success">✅ Ready</span> Form integration is active</p>
+            </div>
+            
+            <!-- Test Form -->
+            <div class="test-form">
+                <h2>📝 Test Form Integration</h2>
+                <p>Use this form to test the Google Sheets integration. Submitting will create a new row in the connected Google Sheet.</p>
+                
+                <form id="testContactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="testName">Name *</label>
+                        <input type="text" id="testName" name="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="testBusinessName">Business Name *</label>
+                        <input type="text" id="testBusinessName" name="businessName" required placeholder="Enter your business name">
+                    </div>
+                    <div class="form-group">
+                        <label for="testPhone">Phone Number *</label>
+                        <input type="tel" id="testPhone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="testEmail">Email Address *</label>
+                        <input type="email" id="testEmail" name="email" required placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="testRequirement">Automation Requirement *</label>
+                        <textarea id="testRequirement" name="requirement" required placeholder="Describe your automation needs..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="testPlan">Plan Interested *</label>
+                        <select id="testPlan" name="plan" required>
+                            <option value="">Select a plan</option>
+                            <option value="Demo">Demo Plan - ₹500</option>
+                            <option value="Basic">Basic Plan - ₹2,500</option>
+                            <option value="Standard">Standard Plan - ₹5,000</option>
+                            <option value="Custom">Custom Plan</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="testSubmitBtn">Test Submit to Google Sheets</button>
+                </form>
+                
+                <div id="testSuccessMessage" class="success-message" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3>Success!</h3>
+                    <p>Data has been submitted to Google Sheets. Check your spreadsheet to verify.</p>
+                    <button onclick="resetTestForm()">Test Another Submission</button>
+                </div>
+            </div>
+            
+            <!-- Testing Instructions -->
+            <div class="test-section">
+                <h2>📋 Testing Instructions</h2>
+                <ol>
+                    <li>Fill out the test form above with valid data</li>
+                    <li>Submit the form - it should NOT reload the page</li>
+                    <li>You should see a success message after submission</li>
+                    <li>Check your Google Sheet to confirm a new row was created</li>
+                    <li>Test with invalid data to see error handling</li>
+                </ol>
+                
+                <h3>Expected Behavior</h3>
+                <ul>
+                    <li>✅ Form validation prevents submission with missing/invalid data</li>
+                    <li>✅ Button shows "Submitting..." during processing</li>
+                    <li>✅ Success message appears after successful submission</li>
+                    <li>✅ No page reload occurs</li>
+                    <li>✅ Error messages appear for invalid inputs</li>
+                    <li>✅ Form can be reset to submit again</li>
+                </ul>
+            </div>
+            
+            <!-- Google Sheet Verification -->
+            <div class="test-section">
+                <h2>🔍 Verify in Google Sheets</h2>
+                <p>To verify submissions are working:</p>
+                <ol>
+                    <li>Open your Google Sheet: <a href="https://docs.google.com/spreadsheets/d/1OzdQ-B__cHqbuNp2GTRUxYqxP9t8F1d_SmPeOga1yDo/edit?usp=sharing" target="_blank">View Sheet</a></li>
+                    <li>Check that new rows appear with timestamp and form data</li>
+                    <li>Verify all fields are properly mapped</li>
+                </ol>
+                
+                <div class="integration-details">
+                    <h3>Expected Columns in Google Sheet</h3>
+                    <p><strong>Column A:</strong> Timestamp</p>
+                    <p><strong>Column B:</strong> Name</p>
+                    <p><strong>Column C:</strong> Business Name</p>
+                    <p><strong>Column D:</strong> Phone</p>
+                    <p><strong>Column E:</strong> Email</p>
+                    <p><strong>Column F:</strong> Requirement</p>
+                    <p><strong>Column G:</strong> Plan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test form integration using the same logic as main site
+        const testContactForm = document.getElementById('testContactForm');
+        const testSubmitBtn = document.getElementById('testSubmitBtn');
+        const testSuccessMessage = document.getElementById('testSuccessMessage');
+
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5yqGCHcYyQbAa4nyIP37qhmbPXhYCB0X2UPwicLwKbfBWgnwr_1urKKi2P0UumGyF/exec';
+
+        // Test form submission handler
+        if (testContactForm) {
+            testContactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Clear previous errors
+                clearTestValidationErrors();
+
+                // Validate form
+                if (!validateTestForm()) {
+                    return;
+                }
+
+                // Show loading state
+                const originalBtnText = testSubmitBtn.textContent;
+                testSubmitBtn.textContent = 'Submitting to Google Sheets...';
+                testSubmitBtn.disabled = true;
+                testSubmitBtn.style.opacity = '0.7';
+
+                // Collect and sanitize form data
+                const formData = {
+                    name: sanitizeInput(document.getElementById('testName').value.trim()),
+                    business: sanitizeInput(document.getElementById('testBusinessName').value.trim()),
+                    phone: sanitizeInput(document.getElementById('testPhone').value.trim()),
+                    email: sanitizeInput(document.getElementById('testEmail').value.trim()),
+                    requirement: sanitizeInput(document.getElementById('testRequirement').value.trim()),
+                    plan: document.getElementById('testPlan').value
+                };
+
+                try {
+                    // Send data to Google Sheets
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    // Show success message
+                    showTestSuccessMessage();
+
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    showTestErrorMessage('Unable to submit form. Please check your connection and try again.');
+                } finally {
+                    // Reset button state
+                    testSubmitBtn.textContent = originalBtnText;
+                    testSubmitBtn.disabled = false;
+                    testSubmitBtn.style.opacity = '1';
+                }
+            });
+        }
+
+        // Test form validation and helper functions (same as main site)
+        function sanitizeInput(input) {
+            if (!input) return '';
+            return input
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function clearTestValidationErrors() {
+            const errorElements = document.querySelectorAll('.test-error-message');
+            errorElements.forEach(el => el.remove());
+            
+            const formGroups = document.querySelectorAll('.test-form .form-group');
+            formGroups.forEach(group => {
+                group.classList.remove('error');
+            });
+        }
+
+        function showTestFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            
+            if (formGroup && !formGroup.querySelector('.test-error-message')) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message test-error-message';
+                errorDiv.textContent = message;
+                formGroup.appendChild(errorDiv);
+                formGroup.classList.add('error');
+            }
+        }
+
+        function showTestErrorMessage(message) {
+            const existingError = document.querySelector('.test-form-error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error-message test-form-error-message';
+            errorDiv.innerHTML = `
+                <div class="error-icon">⚠️</div>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()" class="close-error">&times;</button>
+            `;
+            
+            testContactForm.parentNode.insertBefore(errorDiv, testContactForm);
+            
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.remove();
+                }
+            }, 10000);
+        }
+
+        function validateTestForm() {
+            const name = document.getElementById('testName').value.trim();
+            const businessName = document.getElementById('testBusinessName').value.trim();
+            const phone = document.getElementById('testPhone').value.trim();
+            const email = document.getElementById('testEmail').value.trim();
+            const requirement = document.getElementById('testRequirement').value.trim();
+            const plan = document.getElementById('testPlan').value;
+
+            let isValid = true;
+
+            if (!name) {
+                showTestFieldError('testName', 'Please enter your name');
+                isValid = false;
+            }
+
+            if (!businessName) {
+                showTestFieldError('testBusinessName', 'Please enter your business name');
+                isValid = false;
+            }
+
+            if (!phone) {
+                showTestFieldError('testPhone', 'Please enter your phone number');
+                isValid = false;
+            } else {
+                const phoneRegex = /^[6-9]\d{9}$/;
+                const cleanPhone = phone.replace(/\D/g, '');
+                if (!phoneRegex.test(cleanPhone)) {
+                    showTestFieldError('testPhone', 'Please enter a valid 10-digit phone number (6-9)xxxxxxxx');
+                    isValid = false;
+                }
+            }
+
+            if (!email) {
+                showTestFieldError('testEmail', 'Please enter your email address');
+                isValid = false;
+            } else {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    showTestFieldError('testEmail', 'Please enter a valid email address');
+                    isValid = false;
+                }
+            }
+
+            if (!requirement) {
+                showTestFieldError('testRequirement', 'Please describe your automation requirement');
+                isValid = false;
+            }
+
+            if (!plan) {
+                showTestFieldError('testPlan', 'Please select a plan');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                const firstError = document.querySelector('.test-form .form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            return isValid;
+        }
+
+        function showTestSuccessMessage() {
+            if (testContactForm && testSuccessMessage) {
+                testContactForm.style.display = 'none';
+                testSuccessMessage.style.display = 'block';
+                testSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function resetTestForm() {
+            if (testContactForm && testSuccessMessage) {
+                testContactForm.reset();
+                testContactForm.style.display = 'block';
+                testSuccessMessage.style.display = 'none';
+                clearTestValidationErrors();
+            }
+        }
+    </script>
+</body>
+</html>
