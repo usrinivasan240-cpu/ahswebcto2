@@ -387,70 +387,8 @@ button:focus {
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-}
-
-.pricing-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 40px 30px;
-    text-align: center;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 140, 255, 0.2);
-}
-
-.pricing-card.featured {
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 30px rgba(0, 140, 255, 0.2);
-}
-
-.badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent-blue);
-    color: var(--text-white);
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.pricing-card h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: var(--text-white);
-}
-
-.price {
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--accent-blue);
-    margin-bottom: 30px;
-}
-
-.pricing-features {
-    list-style: none;
-    margin-bottom: 30px;
-    text-align: left;
-}
-
-.pricing-features li {
-    padding: 12px 0;
-    color: var(--text-gray);
-    border-bottom: 1px solid var(--border-color);
-}
-
-.pricing-features li:last-child {
-    border-bottom: none;
 }
 
 /* ========================================
@@ -892,4 +830,204 @@ button:focus {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #0077e6;
+}
+
+/* ========================================
+   LOADING UI (from user request)
+   ======================================== */
+.inline-flex { display: inline-flex; }
+.items-center { align-items: center; }
+.gap-3 { gap: 0.75rem; }
+.size-6 { width: 1.5rem; height: 1.5rem; }
+.animate-spin { animation: spin 1s linear infinite; }
+.text-indigo-600 { color: var(--accent-blue); }
+.font-medium { font-weight: 500; }
+.text-gray-700 { color: var(--text-gray); }
+.opacity-25 { opacity: 0.25; }
+.opacity-75 { opacity: 0.75; }
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   PRICING CARD (from Uiverse.io by iconicchandu)
+   ======================================== */
+.card {
+  position: relative;
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 20px 40px rgba(0, 140, 255, 0.2);
+}
+
+.card__border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-blue);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card__border {
+  opacity: 1;
+}
+
+.card_title__container {
+  text-align: center;
+}
+
+.card_title {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+
+.card_paragraph {
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+  border: none;
+  margin: 10px 0;
+}
+
+.card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card__list_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 140, 255, 0.1);
+  border-radius: 50%;
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.check_svg {
+  width: 14px;
+  height: 14px;
+}
+
+.list_text {
+  font-size: 15px;
+  color: var(--text-gray);
+}
+
+/* ========================================
+   AI HUD SEARCH (from Uiverse.io by vaibhavchandranv)
+   ======================================== */
+.ai-hud-component {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 10;
+}
+
+.ai-hud-frame {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.ai-hud-frame:focus-within {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 20px rgba(0, 140, 255, 0.2);
+}
+
+.ai-hud-input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 15px;
+}
+
+.ai-hud-input {
+  flex: 1;
+  background: transparent !important;
+  border: none !important;
+  padding: 15px 0 !important;
+  color: var(--text-white) !important;
+  font-size: 16px !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.ai-hud-caret {
+  width: 2px;
+  height: 20px;
+  background-color: var(--accent-blue);
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.ai-hud-btn {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-gray) !important;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+}
+
+.ai-hud-btn:hover {
+  color: var(--accent-blue) !important;
+  background: transparent !important;
+}
+
+.ai-hud-icon {
+  width: 20px;
+  height: 20px;
 }
