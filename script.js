@@ -5,7 +5,7 @@ const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-menu a');
 
-if (navToggle) {
+if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
@@ -13,20 +13,24 @@ if (navToggle) {
 }
 
 // Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+if (navToggle && navMenu) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
     });
-});
+}
 
 // Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-    }
-});
+if (navToggle && navMenu) {
+    document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}
 
 // ========================================
 // PLAN SELECTION FUNCTION
@@ -369,45 +373,18 @@ document.querySelectorAll('.feature-card, .service-card, .pricing-card, .benefit
 // ========================================
 // HEADER SCROLL EFFECT
 // ========================================
-let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-    if (currentScroll > 100) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
-    } else {
-        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-
-    lastScroll = currentScroll;
-});
-
-// ========================================
-// SEARCH COMPONENT HANDLING
-// ========================================
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.querySelector('.ai-hud-input');
-    const searchBtn = document.querySelector('.ai-hud-btn');
-
-    if (searchBtn && searchInput) {
-        searchBtn.addEventListener('click', () => {
-            const query = searchInput.value.trim();
-            if (query) {
-                // For demo purposes, we'll show an alert. 
-                // In a real application, this could trigger a search or AI chat.
-                alert(`Searching for: ${query}\n\nOur AI automation experts are ready to help you with "${query}". Contact us for a custom solution!`);
-                searchInput.value = '';
-            }
-        });
-
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                searchBtn.click();
-            }
-        });
-    }
-});
+        if (currentScroll > 100) {
+            navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
+        } else {
+            navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    });
+}
