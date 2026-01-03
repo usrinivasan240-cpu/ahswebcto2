@@ -49,6 +49,35 @@
                 <button class="cta-button" onclick="window.open('https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/12/30/16/20251230160623-O7WT6KLH.json', '_blank')">Try Chatbot Demo</button>
                 <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact Us</button>
             </div>
+
+            <!-- Search Component -->
+            <div class="ai-hud-component">
+                <div class="ai-hud-frame">
+                    <div class="ai-hud-input-wrapper">
+                        <input
+                            placeholder="Ask AutoHub anything..."
+                            class="ai-hud-input"
+                            type="text"
+                        />
+                        <span class="ai-hud-caret"></span>
+                        <button class="ai-hud-btn" aria-label="Search">
+                            <svg
+                                stroke-width="2"
+                                stroke="currentColor"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                class="ai-hud-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M22 2L11 13"></path>
+                                <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="ai-hud-grid"></div>
+            </div>
+
             <p class="hero-intro">Transform your business communication with intelligent automation. Respond instantly, 24/7, and never lose a customer due to delayed responses.</p>
         </div>
     </section>
@@ -153,54 +182,184 @@
             <h2 class="section-title">Pricing Plans</h2>
             <p class="pricing-note">✦ No refund policy</p>
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Demo Plan</h3>
-                    <div class="price">₹500</div>
-                    <ul class="pricing-features">
-                        <li>✓ Basic automation setup</li>
-                        <li>✓ 7-day trial</li>
-                        <li>✓ Limited features</li>
-                        <li>✓ Email support</li>
+                <!-- Demo Plan -->
+                <div class="card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">Demo Plan</span>
+                        <p class="card_paragraph">₹500 - Basic automation setup</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Basic automation setup</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">7-day trial</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Limited features</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Email support</span>
+                        </li>
                     </ul>
-                    <button onclick="selectPlan('Demo')">Choose Demo</button>
+                    <button class="cta-button" onclick="selectPlan('Demo')">Choose Demo</button>
                 </div>
-                <div class="pricing-card featured">
-                    <div class="badge">Most Popular</div>
-                    <h3>Basic Plan</h3>
-                    <div class="price">₹2,500</div>
-                    <ul class="pricing-features">
-                        <li>✓ Full automation setup</li>
-                        <li>✓ 30-day support</li>
-                        <li>✓ WhatsApp integration</li>
-                        <li>✓ Custom workflows</li>
-                        <li>✓ Priority support</li>
+
+                <!-- Basic Plan -->
+                <div class="card">
+                    <div class="card__border" style="opacity: 1;"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">Basic Plan</span>
+                        <p class="card_paragraph">₹2,500 - Full automation setup</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Full automation setup</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">30-day support</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">WhatsApp integration</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Custom workflows</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Priority support</span>
+                        </li>
                     </ul>
-                    <button onclick="selectPlan('Basic')">Choose Basic</button>
+                    <button class="cta-button" onclick="selectPlan('Basic')">Choose Basic</button>
                 </div>
-                <div class="pricing-card">
-                    <h3>Standard Plan</h3>
-                    <div class="price">₹5,000</div>
-                    <ul class="pricing-features">
-                        <li>✓ All Basic features</li>
-                        <li>✓ 90-day support</li>
-                        <li>✓ AI chatbot integration</li>
-                        <li>✓ Advanced analytics</li>
-                        <li>✓ Multi-channel support</li>
-                        <li>✓ Custom integrations</li>
+
+                <!-- Standard Plan -->
+                <div class="card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">Standard Plan</span>
+                        <p class="card_paragraph">₹5,000 - AI chatbot integration</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">All Basic features</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">90-day support</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">AI chatbot integration</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Advanced analytics</span>
+                        </li>
                     </ul>
-                    <button onclick="selectPlan('Standard')">Choose Standard</button>
+                    <button class="cta-button" onclick="selectPlan('Standard')">Choose Standard</button>
                 </div>
-                <div class="pricing-card">
-                    <h3>Custom Plan</h3>
-                    <div class="price">Custom</div>
-                    <ul class="pricing-features">
-                        <li>✓ Tailored to your needs</li>
-                        <li>✓ Unlimited support</li>
-                        <li>✓ Enterprise solutions</li>
-                        <li>✓ Dedicated account manager</li>
-                        <li>✓ Custom development</li>
+
+                <!-- Custom Plan -->
+                <div class="card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">Custom Plan</span>
+                        <p class="card_paragraph">Tailored to your needs</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Enterprise solutions</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Unlimited support</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Dedicated account manager</span>
+                        </li>
                     </ul>
-                    <button onclick="selectPlan('Custom')">Contact Us</button>
+                    <button class="cta-button" onclick="selectPlan('Custom')">Contact Us</button>
                 </div>
             </div>
         </div>
